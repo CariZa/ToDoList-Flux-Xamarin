@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
+    <PackageReference Include="ReactiveUI.Dialogs" Version="0.5.2" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewModels\MainPageViewModel.cs" />
+    <Compile Remove="Models\StoreEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Models\" />
+    <Folder Include="Actions\" />
+    <Folder Include="ActionTypes\" />
+    <Folder Include="Stores\" />
+    <Folder Include="Startup\" />
+  </ItemGroup>
+</Project>

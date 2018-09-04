@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    x:Name="ToDoListPageScope"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ToDoListFlux.Views.ToDoListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Pop" Command="{Binding PopulateCommand}"></ToolbarItem>
+        <ToolbarItem Name="Create" Command="{Binding CreateCommand}"></ToolbarItem>
+        <ToolbarItem Name="Clear" Command="{Binding DeleteCompletedCommand}"></ToolbarItem>
+        <ToolbarItem Name="Toggle" Command="{Binding ToggleAllCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="ToDoListView" ItemsSource="{Binding Items}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Text}" Detail="{Binding IsCompleted, StringFormat='Is Complete: {0:S}'}">
+                   <TextCell.ContextActions>
+                        <MenuItem Text="Delete" IsDestructive="True" Command="{Binding Source={x:Reference ToDoListView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        <MenuItem Text="Toggle" Command="{Binding Source={x:Reference ToDoListView}, Path=BindingContext.ToggleCommand}" CommandParameter="{Binding .}"></MenuItem>
+                        <MenuItem Text="Edit" Command="{Binding Source={x:Reference ToDoListView}, Path=BindingContext.EditCommand}" CommandParameter="{Binding .}"></MenuItem>
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
